@@ -1,6 +1,7 @@
 
 # A very simple Flask Hello World app for you to get started with...
 
+import datetime
 from flask import Flask, request
 from uuid import UUID
 import random
@@ -209,11 +210,12 @@ def delete_bab(babID):
 def add_bab(userID):
     content = request.json['content']
     babID = rd.randint(10000, 99999)
+    date = datetime.date.today().strftime('%Y-%m-%d')
     bab_dict[babID] = {
         'babID': babID,
         'authorUser': user_dict[userID],
         'content': content,
-        'date': '2020-12-25',
+        'date': date,
         'likes': 0,
         'likedUserList': []
     }
