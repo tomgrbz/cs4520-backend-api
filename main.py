@@ -248,6 +248,16 @@ def sign_up():
         'userID': userID,
         'password': password
     }
+    random_profile_id = rd.randint(10000, 99999)
+    user_profile_dict[random_profile_id] = {
+        'user': user_dict[userID],
+        'description': '',
+        'followerList': [],
+        'followerCount': 0,
+        'followingList': [],
+        'followingListCount': 0,
+        'babCount': 0,
+    }
     return {'user': user_dict[userID]}
 
 # Get user profile given user id
