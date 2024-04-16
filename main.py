@@ -205,6 +205,21 @@ def delete_bab(babID):
     del bab_dict[babID]
     return {'success': True}
 
+@app.route('/babs/<uuid(strict=False):userID>', methods=['POST'])
+def add_bab(userID):
+    content = request.json['content']
+    babID = rd.randint(10000, 99999)
+    bab_dict[babID] = {
+        'babID': babID,
+        'authorUser': user_dict[userID],
+        'content': content,
+        'date': '2020-12-25',
+        'likes': 0,
+        'likedUserList': []
+    }
+    return {'bab': bab_dict[babID], 'allBabsByUser': get_babs_by_user(userID)}
+    
+
 #  Get all babs from a user
 @app.route('/users/babs/<uuid(strict=False):userID>', methods=['GET'])
 def get_user_babs(userID):
@@ -275,7 +290,6 @@ def unfollow_user(to_unfollow_userID):
     this_user_profile['followingList'].remove(user_dict[to_unfollow_userID])
     this_user_profile['followingListCount'] -= 1
     return {'success': True, 'toUnfollowUserProfile': to_unfollow_user_profile, 'thisUserProfile': this_user_profile}
-
 
 # utility method to get user profile from given user id
 def get_user_profile_from_userID(userID):
