@@ -200,6 +200,18 @@ def like_bab(babID):
     bab['likes'] += 1
     return {'likes': bab['likes'], 'likedUserList': bab['likedUserList']}
 
+# Unlikes a bab given a bab id
+@app.route('/babs/<babID>/likes', methods=['DELETE'])
+def unlike_bab(babID):
+    # User id from request body
+    userID = request.json['userID']
+    bab = bab_dict[babID]
+    if userID not in bab['likedUserList']:
+        return {'error': 'User has not liked this bab'}
+    bab['likedUserList'].remove(userID)
+    bab['likes'] -= 1
+    return {'likes': bab['likes'], 'likedUserList': bab['likedUserList']}
+
 # Deletes a bab given a bab id
 @app.route('/babs/<babID>', methods=['DELETE'])
 def delete_bab(babID):
@@ -266,6 +278,13 @@ def sign_up():
 @app.route('/profiles/<uuid(strict=False):userID>', methods=['GET'])
 def get_user_profile(userID):
     user_profile = get_user_profile_from_userID(userID)
+    return {'profile': user_profile}
+
+# Change description of user profile
+@app.route('/profiles/<uuid(strict=False):userID>/description', methods=['POST'])
+def change_description(userID):
+    user_profile = get_user_profile_from_userID(userID)
+    user_profile['description'] = request.json['description']
     return {'profile': user_profile}
 
 # Get user followering list and followingList count given user id
