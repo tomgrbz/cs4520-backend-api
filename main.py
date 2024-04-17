@@ -201,7 +201,7 @@ def like_bab(babID):
     return {'likes': bab['likes'], 'likedUserList': bab['likedUserList']}
 
 # Unlikes a bab given a bab id
-@app.route('/babs/<babID>/likes', methods=['POST'])
+@app.route('/babs/<babID>/unlikes', methods=['POST'])
 def unlike_bab(babID):
     # User id from request body
     userID = request.json['userID']
