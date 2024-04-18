@@ -287,6 +287,13 @@ def change_description(userID):
     user_profile['description'] = request.json['description']
     return {'profile': user_profile}
 
+@app.route('/profiles/<uuid(strict=False):userID>/username', methods=['POST'])
+def change_username(userID):
+    user = user_dict[userID]
+    user['username'] = request.json['username']
+    get_user_profile_from_userID(userID)['user'] = user
+    return {'user': user}
+
 # Get user followering list and followingList count given user id
 @app.route('/users/<uuid(strict=False):userID>/following', methods=['GET'])
 def get_user_followingList(userID):
