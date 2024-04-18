@@ -24,39 +24,45 @@ user5_id = UUID(int=rd.getrandbits(128), version=4)
 user_dict = {
     user1_id: {
         'username': '#1pokemonfan',
-        'imgHref': "res/bear",
+        'imgHref': "https://m.media-amazon.com/images/I/31YObRg58fL._SY445_SX342_.jpg",
         'userID': user1_id,
         'password': 'password'
     },
     user2_id: {
         'username': 'thomas grbic',
-        'imgHref': "res/bear",
+        'imgHref': "https://m.media-amazon.com/images/I/31YObRg58fL._SY445_SX342_.jpg",
         'userID': user2_id,
         'password': 'password123'
     },
     user3_id: {
         'username': 'ben10',
-        'imgHref': "res/bear",
+        'imgHref': "https://i.pinimg.com/736x/7d/ca/ea/7dcaea1bdd02cc7f5a1d0723015227ff.jpg",
         'userID': user3_id,
         'password': 'qwerty'
     },
     user4_id: {
         'username': 'Official Spongebob',
-        'imgHref': "res/bear",
+        'imgHref': "https://nickelodeonuniverse.com/wp-content/uploads/Spongebob.png",
         'userID': user4_id,
         'password': 'abc123'
     },
     user5_id: {
         'username': 'Dora the Explorer',
-        'imgHref': "res/bear",
+        'imgHref': "https://pernilleripp.files.wordpress.com/2011/04/0d26c-dora_explorer_show.jpg?w=219&h=320",
         'userID': user5_id,
         'password': 'abc123'
     },
     '123': {
         'username': 'testuser',
-        'imgHref': "res/bear",
+        'imgHref': "https://m.media-amazon.com/images/I/31YObRg58fL._SY445_SX342_.jpg",
         'userID': '123',
         'password': 'password'
+    },
+    '1234': {
+        'username': 'plankton',
+        'imgHref': "https://m.media-amazon.com/images/I/31YObRg58fL._SY445_SX342_.jpg",
+        'userID': '1234',
+        'password': 'pass'
     },
 }
 
@@ -117,6 +123,14 @@ bab_dict = {
         'likes': 4,
         'likedUserList': [user1_id, user3_id, user4_id, user5_id]
     },
+    '12352': {
+        'babID': 12352,
+        'authorUser': user_dict['1234'],
+        'content': 'Maximum overdrive!',
+        'date': '2024-04-16',
+        'likes': 2,
+        'likedUserList': [user1_id, user2_id]
+    },
 }
 
 user_profile_dict = {
@@ -168,6 +182,15 @@ user_profile_dict = {
     '12350': {
         'user': user_dict[user5_id],
         'description': 'Anyone seen my map?',
+        'followerList': [user_dict[user2_id], user_dict[user3_id]],
+        'followerCount': 2,
+        'followingList': [user_dict[user3_id], user_dict[user4_id]],
+        'followingListCount': 2,
+        'babCount': 1,
+    },
+    '12351': {
+        'user': user_dict['1234'],
+        'description': 'I will steal the krabby patty formula!!',
         'followerList': [user_dict[user2_id], user_dict[user3_id]],
         'followerCount': 2,
         'followingList': [user_dict[user3_id], user_dict[user4_id]],
